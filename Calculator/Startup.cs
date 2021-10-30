@@ -28,7 +28,7 @@ namespace Calculator
             services.AddControllersWithViews();
             services.AddProgressiveWebApp();
             services.AddMvc();
-            var connectionString = "Server=(localdb)\\mssqllocaldb;Database=Calculator;Trusted_Connection=True;MultipleActiveResultSets=true";
+            var connectionString = "Server=(localdb)\\mssqllocaldb;Database=calculator;Trusted_Connection=True;MultipleActiveResultSets=true";
             services.AddDbContext<CalculatorDataContext>(options =>
             options.UseSqlServer(connectionString));
         }
