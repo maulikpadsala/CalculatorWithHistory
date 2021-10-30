@@ -1,0 +1,45 @@
+﻿@model List<Calculator.Models.CalculatorHistoryModel>
+
+@{
+    ViewData["Title"] = "Calculator History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Calculator History</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Calculation History")
+            </th>
+            <th>
+                @Html.DisplayName("Created On")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HistoryCalculation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                <input type="button" class="btn btn-danger" onclick="DeleteHistory(@item.HistoryId)" value="Delete" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    function DeleteHistory(Id) {
+        var result = confirm("Are you sure for delete this Calculation history ?");
+        if (result) {
+            window.location.href = '@Url.Action("DeleteHistory", "Home")?Id=' + Id;
+        }
+    }
+</script>
